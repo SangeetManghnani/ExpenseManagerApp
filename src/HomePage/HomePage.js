@@ -14,7 +14,6 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import themeDefault from '../Utils/Colors';
 
-// type Props = {};
 const defaultProps = {
   recents : [{
     title: 'Rent Payment',
@@ -113,7 +112,9 @@ export default class HomePage extends Component {
     return (
       <View style={styles.HomeContainer}>
         <LinearGradient colors={[themeDefault.primaryColor2, themeDefault.primaryColor4]} style={styles.navBar}>
-          <Text style={styles.navTitle}>Expense Manager</Text>
+          <View style={styles.topBar}>
+            <Text style={styles.navTitle}>Summary</Text>
+          </View>
         </LinearGradient>
         <View style={styles.rowView}>
           <Text style={styles.textBold}>Latest Transaction</Text>
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   navBar: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-between',
     flex: 0.7,
   },
@@ -177,6 +178,11 @@ const styles = StyleSheet.create({
   },
   navTitle: {
     color: 'white', // changing navbar title color
+    fontWeight: 'bold',
+    flexWrap: "wrap",
+    flex: 1,
+    fontSize: 20,
+    textAlign: 'center'
   },
   welcome: {
     fontSize: 20,
@@ -199,5 +205,13 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     flex: 1,
     textAlign: 'left'
+  },
+  topBar:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 30,
+    paddingLeft: 10,
+    paddingRight: 10,
   }
 });

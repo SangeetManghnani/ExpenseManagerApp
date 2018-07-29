@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView
+  ScrollView,
+  StatusBar
 } from 'react-native';
 import HomePage from './src/HomePage/HomePage';
 
@@ -20,6 +21,10 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
+      <StatusBar
+          backgroundColor="#720479"
+          barStyle="light-content"
+        />
         <HomePage />
       </View>
     );
