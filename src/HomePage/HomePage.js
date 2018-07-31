@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
-  Button,
   Alert,
   Text,
   View,
   ScrollView,
-  TouchableOpacity,
   Image,
-  FlatList
+  FlatList,
+  TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import themeDefault from '../Utils/Colors';
+import globalStyles from '../Utils/GlobalStyles';
 
 const defaultProps = {
   recents : [{
@@ -78,16 +78,16 @@ export default class HomePage extends Component {
         <View style={styles.listItem} key={index + 1}>
           <View
             style={{
-                borderWidth:1,
-                borderColor:'rgba(0,0,0,0.2)',
-                alignItems:'center',
-                justifyContent:'center',
-                width:40,
-                height:40,
-                backgroundColor:'#fff',
-                borderRadius:100,
-                marginRight: 10,
-              }}
+              borderWidth:1,
+              borderColor:'rgba(0,0,0,0.2)',
+              alignItems:'center',
+              justifyContent:'center',
+              width:40,
+              height:40,
+              backgroundColor:'#fff',
+              borderRadius:100,
+              marginRight: 10,
+            }}
           >
             <Image style={styles.itemImage} source={require("../assets/images/bank.png")} />
           </View>
@@ -99,21 +99,48 @@ export default class HomePage extends Component {
             {item.type === 'debit' ? 
             <Text style={[styles.listItemTitle, styles.listItemTextRight, styles.debitText]}>-{item.amount}</Text>
             :  <Text style={[styles.listItemTitle, styles.listItemTextRight,  styles.creditText]}>+{item.amount}</Text>
-            }
+          }
             <Text style={styles.listItemTextRight}>{item.dated}</Text>
           </View>
         </View>
       )
     });
-
+    
     return(<ScrollView>{listItems}</ScrollView>);
   }
   render() {
     return (
       <View style={styles.HomeContainer}>
-        <LinearGradient colors={[themeDefault.primaryColor2, themeDefault.primaryColor4]} style={styles.navBar}>
+        <LinearGradient colors={[themeDefault.primaryColor2, themeDefault.primaryColor6]} style={styles.navBar}>
           <View style={styles.topBar}>
+            <TouchableOpacity>
+              <Image style={styles.settingsIcon} source={require("../assets/images/menu.png")} />
+            </TouchableOpacity>
             <Text style={styles.navTitle}>Summary</Text>
+            <TouchableOpacity>
+              <Image style={styles.settingsIcon} source={require("../assets/images/settings.png")} />
+            </TouchableOpacity>
+          </View>
+          <View style={[styles.summaryContainer]}>
+            <Text style={globalStyles.textHeadingBold}>April, 2018</Text>
+          </View>
+          <View style={styles.summaryContainer}>
+            <View style={[styles.summaryCard]} elevation={2}>
+              <View style={styles.balanceContainer}>
+                <Text style={globalStyles.textMediumBold}>Available Balance</Text>
+                <Text style={[globalStyles.textExtraLarge,styles.balanceText]}>₹45,000</Text>
+              </View>
+              <View style={styles.expenditureContainer}>
+                <View style={styles.rowContainer}>
+                  <Text style={[globalStyles.textMediumBold,styles.expenditureTextLabel]}>Salary:</Text>
+                  <Text style={globalStyles.textMediumBold}>₹75,000</Text>
+                </View>
+                <View style={styles.rowContainer}>
+                  <Text style={[globalStyles.textMediumBold,styles.expenditureTextLabel]}>Spent:</Text>
+                  <Text style={globalStyles.textMediumBold}>₹25,000</Text>
+                </View>
+              </View>
+            </View>
           </View>
         </LinearGradient>
         <View style={styles.rowView}>
@@ -137,6 +164,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     flex: 0.7,
+    padding: 20,
   },
   rowView : {
     flexDirection: 'row',
@@ -210,8 +238,44 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 30,
-    paddingLeft: 10,
-    paddingRight: 10,
+  },
+  settingsIcon: {
+    width: 20,
+    height:20,
+  },
+  summaryCard: {
+    flex: 0.8,
+    flexDirection: 'row',
+    padding: 20,
+    height: 120,
+    borderRadius: 5,
+    borderWidth: 0.5,
+    borderColor: 'transparent',
+    marginBottom: 20,
+  },
+  balanceContainer: {
+    borderRightWidth: 1,
+    borderColor: '#ffffff69',
+    paddingRight: 20,
+  },
+  balanceText:{
+    marginTop: 10,
+  },
+  expenditureContainer: {
+    paddingLeft: 20,
+  },
+  summaryContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  expenditureTextLabel: {
+    marginRight: 10,
+  },
+  rowContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingRight: 20,
   }
 });
+ 
