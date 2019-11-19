@@ -113,9 +113,9 @@ export default class HomePage extends Component {
       <View style={styles.HomeContainer}>
         <LinearGradient colors={[themeDefault.primaryColor2, themeDefault.primaryColor6]} style={styles.navBar}>
           <View style={styles.topBar}>
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <Image style={styles.settingsIcon} source={require("../assets/images/menu.png")} />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <Text style={styles.navTitle}>Summary</Text>
             <TouchableOpacity>
               <Image style={styles.settingsIcon} source={require("../assets/images/settings.png")} />
@@ -132,11 +132,11 @@ export default class HomePage extends Component {
               </View>
               <View style={styles.expenditureContainer}>
                 <View style={styles.rowContainer}>
-                  <Text style={[globalStyles.textMediumBold,styles.expenditureTextLabel]}>Salary:</Text>
+                  <Text style={[globalStyles.text,styles.expenditureTextLabel]}>Salary</Text>
                   <Text style={globalStyles.textMediumBold}>₹75,000</Text>
                 </View>
                 <View style={styles.rowContainer}>
-                  <Text style={[globalStyles.textMediumBold,styles.expenditureTextLabel]}>Spent:</Text>
+                  <Text style={[globalStyles.text,styles.expenditureTextLabel]}>Spent</Text>
                   <Text style={globalStyles.textMediumBold}>₹25,000</Text>
                 </View>
               </View>
@@ -263,18 +263,20 @@ const styles = StyleSheet.create({
   },
   expenditureContainer: {
     paddingLeft: 20,
+    flexDirection: 'column',
+    flex: 1,
   },
   summaryContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
   expenditureTextLabel: {
-    marginRight: 10,
+    marginRight: 5,
   },
   rowContainer: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
     paddingRight: 20,
   }
 });
